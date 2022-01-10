@@ -47,7 +47,7 @@ export const onClientEntry = (_, pluginOptions) => {
       display: grid;
       width: 80%;
       max-width: 90%;
-      height: 90%;
+      height: 100%;
     }
 
     #modal-caption {
@@ -90,7 +90,6 @@ export const onClientEntry = (_, pluginOptions) => {
   node.id = `modal`;
   node.classList = `modal`;
   node.innerHTML = `
-  <span class="modal__close">&times;</span>
   <div class="modal__content" id="modal-picture"></div>
   <div id="modal-caption"></div>`;
   document.body.append(node);
@@ -136,9 +135,7 @@ function runZoom() {
     };
   });
 
-  let span = document.getElementsByClassName("modal__close")[0];
-
-  span.onclick = function (e) {
+  window.onclick = function (e) {
     if (isModalVisible) {
       hideModal();
     }
