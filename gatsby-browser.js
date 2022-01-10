@@ -4,17 +4,16 @@ export const onClientEntry = (_, pluginOptions) => {
     .modal {
       opacity: 0;
       position: fixed;
-      top: 0;
       z-index: -1;
-      padding-top: 80px; /* Location of the box */
+      top: 0;
       left: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow:auto;
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.9);
       transform: scale(1.1);
-      transition: transform 0.4s, opacity 600ms, z-index 800ms;
+      transition: transform 200ms, opacity 300ms, z-index 400ms;
       pointer-events: none;
     }
 
@@ -22,6 +21,7 @@ export const onClientEntry = (_, pluginOptions) => {
       transform: scale(1);
       opacity: 1;
       z-index: 350;
+      pointer-events: auto;
     }
 
     .modal.show:hover {
@@ -137,11 +137,13 @@ function runZoom() {
   });
 
   let span = document.getElementsByClassName("modal__close")[0];
-  window.onclick = function (e) {
+
+  span.onclick = function (e) {
     if (isModalVisible) {
       hideModal();
     }
   };
+
   window.onscroll = function () {
     if (isModalVisible) {
       hideModal();
