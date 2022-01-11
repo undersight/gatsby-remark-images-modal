@@ -7,6 +7,7 @@ export const onClientEntry = (_, pluginOptions) => {
       z-index: -1;
       top: 0;
       left: 0;
+      padding: 2vh 0;
       width: 100%;
       height: 100%;
       overflow: auto;
@@ -15,6 +16,10 @@ export const onClientEntry = (_, pluginOptions) => {
       transform: scale(1.1);
       transition: transform 200ms, opacity 300ms, z-index 400ms;
       pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .modal.show {
@@ -33,32 +38,33 @@ export const onClientEntry = (_, pluginOptions) => {
     }
 
     .modal__content picture {
-      margin: auto;
+      width: auto;
+      height: 83vh;
+      position: relative !important;
     }
 
     .modal__content img {
-      max-width: 100%;
-      max-height: 90vh;
-      position: relative !important;
+      object-fit: contain;
+      object-position: center center;
+      box-shadow: none !important;
     }
 
     .modal__content {
       margin: auto;
       display: grid;
-      width: 80%;
-      max-width: 90%;
-      height: 100%;
+      width: 90%;
     }
 
     #modal-caption {
-      margin: auto;
-      display: block;
-      width: 80%;
+      font-family: 'base-mono-wide', 'Andale Mono', 'AndaleMono', 'Lucida Console', 'Lucida Sans Typewriter', 'Bitstream Vera Sans Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      height: 13vh;
       max-width: 700px;
       text-align: center;
       color: #ccc;
-      padding: 10px 0;
-      height: 8%;
     }
 
     .modal__close {
@@ -127,8 +133,9 @@ function runZoom() {
   children.map((element) => {
     element.onclick = function (e) {
       let picture = this.getElementsByTagName("picture")[0];
+      let imgElement = this.getElementsByTagName("img")[0];
       modalImg.innerHTML = picture.outerHTML;
-      captionText.innerHTML = this.alt ? this.alt : "";
+      captionText.innerHTML = imgElement.alt ? imgElement.alt : "";
       isModalVisible = true;
       modal.classList.add("show");
       e.stopPropagation();
