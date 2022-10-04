@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pszafer/gatsby-remark-images-modal.git"
+    "url": "git+https://github.com/undersight/gatsby-remark-images-modal.git"
   },
   "keywords": [
     "gatsby",
@@ -21,10 +21,10 @@
     "zoom",
     "modal"
   ],
-  "author": "Pawel Szafer",
+  "author": "Pawel Szafer & Eduardo Nunes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pszafer/gatsby-remark-images-modal/issues"
+    "url": "https://github.com/undersight/gatsby-remark-images-modal/issues"
   },
-  "homepage": "https://github.com/pszafer/gatsby-remark-images-modal#readme"
+  "homepage": "https://github.com/undersight/gatsby-remark-images-modal#readme"
 }

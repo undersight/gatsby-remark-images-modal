@@ -7,19 +7,17 @@ export const onClientEntry = (_, pluginOptions) => {
       z-index: -1;
       top: 0;
       left: 0;
-      padding: 2vh 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
       overflow: auto;
       background-color: rgb(0,0,0);
       background-color: rgba(0,0,0,0.9);
       transform: scale(1.1);
       transition: transform 200ms, opacity 300ms, z-index 400ms;
       pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
     }
 
     .modal.show {
@@ -38,33 +36,32 @@ export const onClientEntry = (_, pluginOptions) => {
     }
 
     .modal__content picture {
-      width: auto;
-      height: 83vh;
-      position: relative !important;
+      margin: auto;
     }
 
     .modal__content img {
-      object-fit: contain;
-      object-position: center center;
-      box-shadow: none !important;
+      max-width: 100%;
+      max-height: 90vh;
+      flex: 1;
+      position: relative !important;
     }
 
     .modal__content {
       margin: auto;
       display: grid;
-      width: 90%;
+      width: 80%;
+      max-width: 90%;
+      height: 100%;
     }
 
     #modal-caption {
-      font-family: 'base-mono-wide', 'Andale Mono', 'AndaleMono', 'Lucida Console', 'Lucida Sans Typewriter', 'Bitstream Vera Sans Mono', monospace;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 90%;
-      height: 13vh;
+      margin: auto;
+      display: block;
+      width: 80%;
       max-width: 700px;
       text-align: center;
       color: #ccc;
+      padding: 10px 0;
     }
 
     .modal__close {
@@ -123,9 +120,6 @@ function runZoom() {
       }
     }
     if (children.length == 0) {
-      console.log(document.getElementsByTagName("span"));
-      console.log(document);
-      console.log(children);
       console.log("No pictures found on this page");
       return;
     }
@@ -133,9 +127,9 @@ function runZoom() {
   children.map((element) => {
     element.onclick = function (e) {
       let picture = this.getElementsByTagName("picture")[0];
-      let imgElement = this.getElementsByTagName("img")[0];
       modalImg.innerHTML = picture.outerHTML;
-      captionText.innerHTML = imgElement.alt ? imgElement.alt : "";
+      let caption = element.querySelector("img.gatsby-resp-image-image").alt;
+      captionText.innerHTML = caption || "";
       isModalVisible = true;
       modal.classList.add("show");
       e.stopPropagation();
